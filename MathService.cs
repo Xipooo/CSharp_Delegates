@@ -4,9 +4,11 @@ namespace CSharp_Delegates
     {
         public delegate double ResultHandler(double value1, double value2);
         public delegate void OutboundHandler(double result);
-
+        
         public ResultHandler MathDelegate;
-        public OutboundHandler OutboundDelegate;
+        //public OutboundHandler OutboundDelegate;
+        public event OutboundHandler OutboundEvent; 
+        
         public MathService(){
             MathDelegate = AddNumbers;
             MathDelegate += MultiplyNumbers;
@@ -14,12 +16,12 @@ namespace CSharp_Delegates
 
         public double AddNumbers(double value1, double value2){
             var result = value1 + value2;
-            OutboundDelegate(result);
+            OutboundEvent(result);
             return result;
         }
         public double MultiplyNumbers(double value1, double value2){
             var result = value1 * value2;
-            OutboundDelegate(result);
+            OutboundEvent(result);
             return result;
         }
     }
