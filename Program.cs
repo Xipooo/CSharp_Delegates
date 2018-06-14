@@ -6,7 +6,10 @@ namespace CSharp_Delegates
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            MathService service = new MathService();
+            var result = service.MathDelegate(4.5, 5.78);
+            
+            Console.WriteLine("Result: " + result);
         }
     }
 }
